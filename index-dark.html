@@ -58,7 +58,10 @@
     <h2>Para mais informações, contato abaixo:</h2>
     <!-- HTML !-->
     <button type="button" class="buttonzap" id="whatsapp1">
-      <span>Whatsapp</span>
+      <span>Whatsapp 1</span>
+    </button>
+    <button type="button" class="buttonzap" id="whatsapp2">
+      <span>Whatsapp 2</span>
     </button>
     <br>
     <img id="img360" src="images/icon-white.png">
@@ -69,20 +72,35 @@
 
       $(Document).ready(function(){
   
-          var fone = '+5511973048807'
+          var fone1 = '+5511973048807'
+          var fone2 = '+5511943623908'
   
           var aux = 'Olá, gostaria de saber mais sobre os serviços da SR Flex!'
+
+            $('#whatsapp2').click(function(){
   
+              var msgEnconde = msgEncode( aux )
+              var mobile = detectar_mobile()
+  
+              if( mobile ){
+                  var cellUrl = getUrlCellWhatsapp(fone2, msgEnconde )
+                  enviarPedido( cellUrl )
+              }else{
+                  var webUrl = getUrlWebWhatsapp( fone2, msgEnconde )
+                  enviarPedido( webUrl )
+              }
+              
+          })
           $('#whatsapp1').click(function(){
   
               var msgEnconde = msgEncode( aux )
               var mobile = detectar_mobile()
   
               if( mobile ){
-                  var cellUrl = getUrlCellWhatsapp(fone, msgEnconde )
+                  var cellUrl = getUrlCellWhatsapp(fone1, msgEnconde )
                   enviarPedido( cellUrl )
               }else{
-                  var webUrl = getUrlWebWhatsapp( fone, msgEnconde )
+                  var webUrl = getUrlWebWhatsapp( fone1, msgEnconde )
                   enviarPedido( webUrl )
               }
               
